@@ -1,0 +1,66 @@
+:root {
+  --color-white: #ffffff;
+  --color-gray: #d8d8d8;
+
+  font-family: Inter, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  background: linear-gradient(180deg, rgba(255,105,114,1) 50%, rgba(255,255,255,1) 100%);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+html, body, .bg {
+  min-height: 100vh;
+}
+
+body {
+  margin: 0;
+}
+
+.bg {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.wrapper {
+  position: relative;
+  width: 455px;
+  min-height: 475px;
+  height: 100%;
+}
+
+.content, .modal {
+  position: absolute;
+
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.info {
+  width: 100%;
+  height: auto;
+  padding: 30px 30px 25px 30px;
+
+  border: 2px solid var(--color-gray);
+  border-radius: 10px;
+  background-color: var(--color-white);
+  box-shadow: -1px 7px 10px 5px rgba(34, 60, 80, 0.2);
+}
+
+.modal:not([class~="animate__backInUp"]) {
+  transform: scale3d(0.1, 0.1, 0.1) translate3d(0, 2000px, 0);
+  opacity: 0;
+}
