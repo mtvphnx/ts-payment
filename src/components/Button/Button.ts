@@ -1,6 +1,5 @@
 import {DOM} from "../DOM/DOM";
 import {ButtonProps} from "./Button.props";
-
 import styles from './Button.module.scss';
 
 export class Button extends DOM implements ButtonProps {

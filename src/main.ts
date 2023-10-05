@@ -1,8 +1,7 @@
 import {App, Button} from "./components/";
-import {AppProps, ButtonProps} from "./components/props";
 import styles from './main.module.scss';
 
-const payment: AppProps = new App();
+const payment = new App();
 
 const buttonsValue: Array<[string, string, string, () => void]> = [
     ['Add payment method', 'element', 'add-pay-button', payment.addPayHandler],
@@ -11,12 +10,12 @@ const buttonsValue: Array<[string, string, string, () => void]> = [
     ['Cancel', 'cancel', 'cancel-card-button', payment.cancelCardHandler],
 ]
 
-const addPayButton: ButtonProps = new Button(...buttonsValue[0]);
-const submitPayButton: ButtonProps = new Button(...buttonsValue[1]);
-const submitCardButton: ButtonProps = new Button(...buttonsValue[2]);
-const cancelCardButton: ButtonProps = new Button(...buttonsValue[3]);
+const addPayButton = new Button(...buttonsValue[0]);
+const submitPayButton = new Button(...buttonsValue[1]);
+const submitCardButton = new Button(...buttonsValue[2]);
+const cancelCardButton = new Button(...buttonsValue[3]);
 
-const buttonsList: ButtonProps[] = [addPayButton, submitPayButton, submitCardButton, cancelCardButton];
+const buttonsList = [addPayButton, submitPayButton, submitCardButton, cancelCardButton];
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
     <div class="${styles.bg}">
@@ -35,5 +34,5 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
     </div>
 `;
 
-const initApp = (): void => buttonsList.forEach(item => item && item.init());
+const initApp = () => buttonsList.forEach(item => item?.init());
 document.addEventListener('DOMContentLoaded', initApp);

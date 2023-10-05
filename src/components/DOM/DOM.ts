@@ -24,6 +24,6 @@ export class DOM implements DOMProps {
 
     init() {
         const element = document.getElementById(this.id);
-        element && element.addEventListener('click', this.handler);
+        element?.addEventListener('click', this.handler);
     }
 }
