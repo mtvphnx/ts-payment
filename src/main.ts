@@ -1,13 +1,29 @@
-import {App, Button} from "./components/";
+import {App, Button, List} from "./components/";
 import styles from './main.module.scss';
 
-const payment = new App();
+const add = new App();
+const list = new List();
+
+let elements = list.data;
+
+elements = new Proxy(elements, { // (*)
+    set(target, prop, val) { // для перехвата записи свойства
+        if (val !== 'length') {
+            target[prop] = val;
+
+            return true;
+        } else {
+            return false;
+        }
+    }
+});
+
 
 const buttonsValue: Array<[string, string, string, () => void]> = [
-    ['Add payment method', 'element', 'add-pay-button', payment.addPayHandler],
-    ['Submit', 'submit', 'submit-pay-button', payment.submitPayHandler],
-    ['Submit', 'submit', 'add-card-button', payment.submitCardHandler],
-    ['Cancel', 'cancel', 'cancel-card-button', payment.cancelCardHandler],
+    ['Add payment method', 'element', 'add-pay-button', () => {elements.push({name:"Четвертая"})}],
+    ['Submit', 'submit', 'submit-pay-button', add.submitPayHandler],
+    ['Submit', 'submit', 'add-card-button', add.submitCardHandler],
+    ['Cancel', 'cancel', 'cancel-card-button', add.cancelCardHandler],
 ]
 
 const addPayButton = new Button(...buttonsValue[0]);
@@ -22,6 +38,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
         <div class="${styles.wrapper}">
             <div class="${styles.content}">
                 <div class="${styles.info}">
+                    <div class="${styles.list}"></div>
                     ${addPayButton.$element}
                 </div>
             </div>
